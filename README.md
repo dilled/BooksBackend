@@ -4,7 +4,7 @@ A simple web backend that stores information about a book collection.
 
 Local Server is listening on http://localhost:9000
 
-Server can be tested also https://booksbackend.azurewebsites.net
+Server can be tested also against https://booksbackend.azurewebsites.net
 
 ## Prerequisites
 
