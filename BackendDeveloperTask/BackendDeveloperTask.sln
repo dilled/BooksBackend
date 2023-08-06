@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendDeveloperTask", "BackendDeveloperTask.csproj", "{13F9FCCC-0C1A-4CE8-8438-6E1BCF1407A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksBackendTests", "..\BooksBackendTests\BooksBackendTests.csproj", "{CA08CB87-4617-4098-AADE-055576338C8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13F9FCCC-0C1A-4CE8-8438-6E1BCF1407A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F9FCCC-0C1A-4CE8-8438-6E1BCF1407A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F9FCCC-0C1A-4CE8-8438-6E1BCF1407A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F9FCCC-0C1A-4CE8-8438-6E1BCF1407A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA08CB87-4617-4098-AADE-055576338C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA08CB87-4617-4098-AADE-055576338C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA08CB87-4617-4098-AADE-055576338C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA08CB87-4617-4098-AADE-055576338C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A5748E5-2B52-4773-81D3-84F7427DC645}
+	EndGlobalSection
+EndGlobal
