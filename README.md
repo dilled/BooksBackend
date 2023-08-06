@@ -2,6 +2,10 @@
 
 A simple web backend that stores information about a book collection.
 
+Local Server is listening on http://localhost:9000
+
+Server can be tested also https://booksbackend.azurewebsites.net
+
 ## Prerequisites
 
 Before proceeding, ensure you have the following installed on your machine:
@@ -16,38 +20,20 @@ Open a terminal or command prompt and run the following command to clone the rep
 ```bash
 git clone https://github.com/dilled/BooksBackend.git
 
-This will create a local copy of the repository on your machine.
-
 ## Starting the Backend
 
-### Windows
+Open/Run solution in Visual Studio 2022
 
-1. Open a terminal or command prompt.
+1. Open a terminal or command prompt. 
 2. Navigate to the root folder of the cloned repository using the `cd` command:
 cd BooksBackend/BackendDeveloperTask
-
-3. Run the following command to start the backend:
 dotnet run
-
-The application should now be running, and you should see output indicating that the web server is listening on a specific URL, such as `http://localhost:9000`.
-### Ubuntu
-
-1. Open a terminal.
-2. Navigate to the root folder of the cloned repository using the `cd` command:
-cd BooksBackend/BackendDeveloperTask
-
-3. Run the following command to start the backend:
-dotnet run
-
-The application should now be running, and you should see output indicating that the web server is listening on a specific URL, such as `http://localhost:9000`.
 
 ## Running Tests
 
-To run tests, you can use the .NET CLI.
-
-### Windows and Ubuntu
+To run tests, you can use the .NET CLI. Or Visual Studio, right click on solution and Run Tests.
 
 1. Open a terminal or command prompt.
 2. Navigate to the root folder of the cloned repository using the `cd` command (if you're not already there):
 cd BooksBackend/BooksBackendTests
-
+dotnet test
