@@ -10,29 +10,14 @@ namespace Backend
 
         public Dal(IConfiguration configuration)
         {
+            // Initialize the DAL with the provided configuration and set the database connection string
             _configuration = configuration;
             _dbConnectionString = _configuration.GetConnectionString("SQLiteConnectionString");
         }
 
-        public bool IsConnected()
-        {
-            try
-            {
-                using (var conn = new SqliteConnection(_dbConnectionString))
-                {
-                    conn.Open();
-                    conn.Close();
-                }
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
-        }
-
         public async Task<List<Book>> GetAllBooks()
         {
+            // Get all books from the database
             List<Book> books = new List<Book>();
             try
             {
@@ -41,13 +26,16 @@ namespace Backend
                     await conn.OpenAsync();
                     using (var command = conn.CreateCommand())
                     {
+                        // Execute the SQL query to select all books from the "books" table
                         command.CommandText = "SELECT * FROM books";
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
+                                // Create a new Book object from the data read from the database
                                 var book = new Book().FromQuery(reader);
 
+                                // Add the book to the list of books
                                 books.Add(book);
                             }
                         }
@@ -56,9 +44,11 @@ namespace Backend
             }
             catch
             {
+                // If an exception occurs, throw it to be handled by the caller
                 throw;
             }
 
+            // Return the list of books
             return books;
         }
 
@@ -71,14 +61,17 @@ namespace Backend
                     await conn.OpenAsync();
                     using (var command = conn.CreateCommand())
                     {
+                        // Execute the SQL query to select a book by its ID from the "books" table
                         command.CommandText = "SELECT * FROM books WHERE id=@id";
                         command.Parameters.Add("@id", SqliteType.Integer).Value = id;
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
+                                // Create a new Book object from the data read from the database
                                 var book = new Book().FromQuery(reader);
 
+                                // Return the book found with the provided ID
                                 return book;
                             }
                         }
@@ -87,17 +80,21 @@ namespace Backend
             }
             catch
             {
+                // If an exception occurs, throw it to be handled by the caller
                 throw;
             }
 
+            // Return null if no book is found with the provided ID
             return null;
         }
 
         public async Task<List<Book>> GetBooksByParams(string? author, int? year, string? publisher)
         {
+            // Get books from the database based on the provided query parameters
             List<Book> books = new List<Book>();
             try
             {
+                // Create the base SQL query
                 var query = "SELECT * FROM books WHERE 1=1 ";
 
                 using (var conn = new SqliteConnection(_dbConnectionString))
@@ -124,13 +121,17 @@ namespace Backend
                             command.Parameters.Add(new SqliteParameter("@publisher", publisher));
                         }
 
+                        // Set the command text to the final query with the added conditions
                         command.CommandText = query;
 
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
+                                // Create a new Book object from the data read from the database
                                 var book = new Book().FromQuery(reader);
+
+                                // Add the book to the list of books
                                 books.Add(book);
                             }
                         }
@@ -139,9 +140,11 @@ namespace Backend
             }
             catch
             {
+                // If an exception occurs, throw it to be handled by the caller
                 throw;
             }
 
+            // Return the list of books matching the query parameters
             return books;
         }
 
@@ -154,6 +157,7 @@ namespace Backend
                     await conn.OpenAsync();
                     using (var command = conn.CreateCommand())
                     {
+                        // Execute the SQL query to insert a new book into the "books" table
                         command.CommandText = "INSERT INTO books (title, author, year, publisher, description) " +
                             "VALUES (@title, @author, @year, @publisher, @description)";
                         command.Parameters.Add("@title", SqliteType.Text).Value = book.title;
@@ -176,6 +180,7 @@ namespace Backend
             }
             catch
             {
+                // If an exception occurs, throw it to be handled by the caller
                 throw;
             }
         }
@@ -189,6 +194,7 @@ namespace Backend
                     await conn.OpenAsync();
                     using (var command = conn.CreateCommand())
                     {
+                        // Execute the SQL query to delete a book by its ID from the "books" table
                         command.CommandText = "DELETE FROM books WHERE id=@id";
                         command.Parameters.Add("@id", SqliteType.Integer).Value = id;
 
@@ -198,6 +204,7 @@ namespace Backend
             }
             catch
             {
+                // If an exception occurs, throw it to be handled by the caller
                 throw;
             }
         }
